@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyPokemonApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="features">Features</string>
+
+    <string name="features_text">
+        \u25A0 Abilities\n\t\t\u25AA %1$s\n\t\t\t\t\u25AA Hidden: %2$s
+                    \n\t\t\t\t\u25AA Slot: %3$s\n\t\t\u25AA %4$s\n
+                    \t\t\t\t▪ Hidden: %5$s\n\t\t\t\t▪ Slot: %6$s\n\u25A0 Base experience: %7$s
+    </string>
+</resources>
