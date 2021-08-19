@@ -80,7 +80,7 @@ val percelFileDescriptor = contentResolver
         val body = UploadRequestBody(file, "image" ,this)
 
         UploadApi().uploadImage(
-            MultipartBody.Part.createFormData("image", file.name, body),
+            MultipartBody.Part.createFormData("file", file.name, body),
             RequestBody.create("multipart/form-data".toMediaTypeOrNull(), "json")
         ).enqueue(object : Callback<UploadResponse> {
             override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
@@ -106,6 +106,6 @@ val percelFileDescriptor = contentResolver
     }
 
     override fun onProgressUpdate(percentage: Int) {
-
+                progress_bar.progress = percentage
     }
 }

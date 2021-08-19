@@ -17,7 +17,7 @@ class UploadRequestBody(
     private val callback: UploadCallBack
 ) : RequestBody() {
 
-    override fun contentType() = "$contentType/*".toMediaTypeOrNull()
+    override fun contentType() = "$contentType/jpg".toMediaTypeOrNull()
 
     override fun contentLength() = file.length()
 

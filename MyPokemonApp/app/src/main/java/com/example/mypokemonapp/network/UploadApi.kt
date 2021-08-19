@@ -16,7 +16,7 @@ interface UploadApi {
     @POST("upload")
     fun uploadImage(
         @Part image: MultipartBody.Part,
-        @Part("desc") desc: RequestBody
+        @Part("file") desc: RequestBody
     ): Call<UploadResponse>
 
     companion object {

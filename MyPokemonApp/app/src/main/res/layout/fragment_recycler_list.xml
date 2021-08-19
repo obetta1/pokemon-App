@@ -10,25 +10,33 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-          />
+        android:layout_marginTop="60dp"
+        android:layout_height="match_parent" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" >
+        android:theme="?attr/actionBarTheme">
+
         <ImageButton
             android:id="@+id/uploadImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/upload_icon"
             android:layout_gravity="end"
             android:layout_marginEnd="10dp"
-            />
-    </androidx.appcompat.widget.Toolbar>
+            android:background="@drawable/upload_icon" />
 
+        <ImageView
+            android:id="@+id/header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pokemon2" />
+
+
+    </androidx.appcompat.widget.Toolbar>
 
 
 </FrameLayout>
