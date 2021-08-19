@@ -43,7 +43,6 @@ class UploadRequestBody(
     interface UploadCallBack {
         fun onProgressUpdate(percentage: Int)
 
-
     }
 
     inner class ProgressUpdater(
@@ -58,4 +57,9 @@ class UploadRequestBody(
     companion object {
         private const val DEFAULT_BUFFER_SIZE = 2048
     }
+
+    fun checkPermissions(){
+//        if(contextCompact)
+    }
+
 }
