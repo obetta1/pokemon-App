@@ -99,7 +99,6 @@ val percelFileDescriptor = contentResolver
             }
         })
 
-
     }
     companion object{
         private const val REQUEST_CODE_IMAGE_PICKER = 100

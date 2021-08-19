@@ -29,8 +29,9 @@ class MainViewModel:ViewModel() {
     //making the api call in the IO instead of the main thread
 
     fun makeApiCall(){
-
             viewModelScope.launch(Dispatchers.IO) {
+
+    // this is where i handled the error thatb may occurre from the network call
                 try {
                     val retroInstance = RetroInstance.getRetroInstance()
                         .create(RetroServices::class.java)
