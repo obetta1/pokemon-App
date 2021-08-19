@@ -79,7 +79,24 @@ class PokemonDetail : AppCompatActivity() {
                     it.abilities[1].slot.toString(),
                     it.baseExperience.toString()
                 )
-                //Log.d("school", it.abilities[0].ability.name)
+
+
+//    Glide.with(this).load(it.sprites.backShiny)
+//        .centerCrop()
+//        .placeholder(R.drawable.color_background)
+//        .into(leftUpShine)
+//Glide.with(this).load(it.sprites.frontShiny)
+//        .centerCrop()
+//        .placeholder(R.drawable.color_background)
+//        .into(rightShin)
+//Glide.with(this).load(it.sprites.backDefault)
+//        .centerCrop()
+//        .placeholder(R.drawable.color_background)
+//        .into(leftBottomShine)
+//Glide.with(this).load(it.sprites.backShiny)
+//        .centerCrop()
+//        .placeholder(R.drawable.color_background)
+//        .into(rightBottomShine)
 
 
             } else {
