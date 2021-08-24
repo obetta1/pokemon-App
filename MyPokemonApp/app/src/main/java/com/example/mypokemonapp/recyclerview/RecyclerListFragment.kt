@@ -45,7 +45,7 @@ class RecyclerListFragment : Fragment() {
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.getRecyclerListObserver()
             .observe(viewLifecycleOwner, Observer<RecyclerList> {
-                //try {
+
 
                 if (it != null) {
                     recyclerAdapter = RecyclerViewAdapter()

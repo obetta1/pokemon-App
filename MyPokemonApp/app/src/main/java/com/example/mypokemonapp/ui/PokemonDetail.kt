@@ -20,6 +20,7 @@ import com.example.mypokemonapp.recyclerview.RecyclerListFragment
 import com.example.mypokemonapp.viewModel.DetailViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_pokemon_detail.*
+import java.util.*
 
 class PokemonDetail : AppCompatActivity() {
 
@@ -71,10 +72,18 @@ class PokemonDetail : AppCompatActivity() {
             if (it != null) {
                 features.text = getString(
                     R.string.features_text,
-                    it.abilities[0].ability.name.capitalize(),
+                    it.abilities[0].ability.name.replaceFirstChar {
+                        if (it.isLowerCase()) it.titlecase(
+                            Locale.getDefault()
+                        ) else it.toString()
+                    },
                     it.abilities[0].isHidden.toString(),
                     it.abilities[0].slot.toString(),
-                    it.abilities[1].ability.name.capitalize(),
+                    it.abilities[1].ability.name.replaceFirstChar {
+                        if (it.isLowerCase()) it.titlecase(
+                            Locale.getDefault()
+                        ) else it.toString()
+                    },
                     it.abilities[1].isHidden.toString(),
                     it.abilities[1].slot.toString(),
                     it.baseExperience.toString()

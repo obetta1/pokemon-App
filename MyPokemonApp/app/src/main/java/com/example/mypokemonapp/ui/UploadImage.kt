@@ -29,6 +29,7 @@ class UploadImage : AppCompatActivity(), UploadRequestBody.UploadCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         setContentView(R.layout.activity_upload_image)
 
         image_view.setOnClickListener {

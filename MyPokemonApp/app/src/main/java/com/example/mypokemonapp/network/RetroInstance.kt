@@ -1,5 +1,6 @@
 package com.example.mypokemonapp.network
 
+import com.example.mypokemonapp.model.DetailPokeData
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -15,6 +16,7 @@ class RetroInstance() {
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+                //.create(DetailPokeData::class.jav)
         }
 
 

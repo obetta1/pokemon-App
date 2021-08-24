@@ -20,7 +20,6 @@ class MainViewModel : ViewModel() {
     init {
         recyclerListLiveData = MutableLiveData()
     }
-
     //this function returns the result from the API
     fun getRecyclerListObserver(): MutableLiveData<RecyclerList> {
         return recyclerListLiveData
@@ -31,7 +30,6 @@ class MainViewModel : ViewModel() {
 
     fun makeApiCall() {
         viewModelScope.launch(Dispatchers.IO) {
-
             // this is where i handled the error thatb may occurre from the network call
             // using try and catch
             try {
@@ -39,14 +37,9 @@ class MainViewModel : ViewModel() {
                     .create(RetroServices::class.java)
                 val responce = retroInstance.getDataFromApi("ny")
                 recyclerListLiveData.postValue((responce))
-
             } catch (e: UnknownHostException) {
                 e.printStackTrace()
             }
-
-
         }
-
     }
-
 }

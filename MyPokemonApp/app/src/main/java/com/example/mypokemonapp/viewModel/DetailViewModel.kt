@@ -30,7 +30,6 @@ class DetailViewModel:ViewModel() {
 
     fun makeApiCall(url: String){
 
-
         viewModelScope.launch(Dispatchers.IO) {
             val retroInstance = RetroInstance.getRetroInstanceDetail()
                 .create(RetroServices::class.java)
@@ -39,5 +38,8 @@ class DetailViewModel:ViewModel() {
 
 
         }
+
     }
+
+
 }
