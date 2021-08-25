@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_pokemon_detail.xml" value="0.2405727858427407" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_upload_image.xml" value="0.23125" />
+        <entry key="app/src/main/res/layout/activity_upload_image.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_recycler_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/recycler_list_role.xml" value="0.18" />
         <entry key="app/src/main/res/layout/recycler_part.xml" value="0.1" />
