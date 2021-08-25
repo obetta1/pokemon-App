@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyWeekTwoActivity</string>
+    <string name="current_orientation">current orientation</string>
+    <string name="button">Button</string>
+    <string name="current_activity">current Activity</string>
+</resources>

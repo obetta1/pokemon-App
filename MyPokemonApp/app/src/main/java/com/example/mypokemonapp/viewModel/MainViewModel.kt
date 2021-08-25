@@ -25,12 +25,15 @@ class MainViewModel : ViewModel() {
         return recyclerListLiveData
     }
 
+
+
+
     // this is basically the function for the coroutine
     //making the api call in the IO instead of the main thread
 
     fun makeApiCall() {
         viewModelScope.launch(Dispatchers.IO) {
-            // this is where i handled the error thatb may occurre from the network call
+            // this is where i handled the error that may occurre from the network call
             // using try and catch
             try {
                 val retroInstance = RetroInstance.getRetroInstance()

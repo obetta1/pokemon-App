@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F696C1"
+    android:background="#6ADDD0"
     tools:context=".ui.PokemonDetail">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,60 +37,17 @@
             tools:text="Pokemon name" />
 
 
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/smallImageLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="400dp"-->
-
-
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/name"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/leftUpShine"-->
-<!--                android:layout_width="190dp"-->
-<!--                android:layout_height="200dp" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/leftBottomShine"-->
-<!--                android:layout_width="190dp"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:layout_alignParentBottom="true" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/rightBottomShine"-->
-<!--                android:layout_width="190dp"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:layout_below="@id/rightShin"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                 />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/rightShin"-->
-<!--                android:layout_width="190dp"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_alignParentRight="true"-->
-<!--                android:layout_marginEnd="1dp" />-->
-
-
-<!--        </RelativeLayout>-->
-
-
         <TextView
             android:id="@+id/features"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="24dp"
             android:text="Features:"
             android:textSize="28dp"
-            android:layout_marginTop="20dp"
             android:textStyle="bold|italic"
-            app:layout_constraintTop_toBottomOf="@id/name"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="344dp" />
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

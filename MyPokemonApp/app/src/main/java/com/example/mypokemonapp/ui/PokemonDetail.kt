@@ -13,11 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
 import com.example.mypokemonapp.R
+import com.example.mypokemonapp.connectivity.ConnectivityLiveData
 import com.example.mypokemonapp.model.DetailPokeData
 import com.example.mypokemonapp.model.PokemonCharacters
 import com.example.mypokemonapp.network.RetroInstance.Companion.id
 import com.example.mypokemonapp.recyclerview.RecyclerListFragment
 import com.example.mypokemonapp.viewModel.DetailViewModel
+import com.example.mypokemonapp.viewModel.MainViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_pokemon_detail.*
 import java.util.*
@@ -33,6 +35,9 @@ class PokemonDetail : AppCompatActivity() {
     private lateinit var status: TextView
     private lateinit var pokemonCharacter: PokemonCharacters
 
+    private lateinit var connectivityLiveData: ConnectivityLiveData
+
+
     // private lateinit var binding : PokemonDetailBinding
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,18 +47,24 @@ class PokemonDetail : AppCompatActivity() {
         var main_poke_image: ImageView = findViewById(R.id.main_photo_image)
         features = findViewById(R.id.features)
 
+       // val connet = ConnectivityLiveData(this.application)
+        connectivityLiveData = ConnectivityLiveData(this.application)
 
 // this the values passed from the recyclerList activity
         var bundle: Bundle? = intent.extras
         val detail_name = intent.getStringExtra("name")
         val detail_url = intent.getStringExtra("url")
 
+        // call the networkObserver to check when there is network or not
+        // before making call to the API
+        networkObserver(detail_url!!)
+
         name.text = detail_name
 
         val viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         viewModel.viewModelScope
         // this is the base url
-        //this is reposible for getting the image from the api
+        //this is responsible for getting the image from the api
         val image_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
         val url = detail_url.toString()
         var str = url.split("/")
@@ -65,8 +76,7 @@ class PokemonDetail : AppCompatActivity() {
             .into(main_poke_image)
 
         // call the view model function makeApi call
-        viewModel.makeApiCall(detail_url!!)
-
+       // viewModel.makeApiCall(detail_url!!)
 
         viewModel.pokemon.observe(this, Observer<DetailPokeData> {
             if (it != null) {
@@ -90,28 +100,38 @@ class PokemonDetail : AppCompatActivity() {
                 )
 
 
-//    Glide.with(this).load(it.sprites.backShiny)
-//        .centerCrop()
-//        .placeholder(R.drawable.color_background)
-//        .into(leftUpShine)
-//Glide.with(this).load(it.sprites.frontShiny)
-//        .centerCrop()
-//        .placeholder(R.drawable.color_background)
-//        .into(rightShin)
-//Glide.with(this).load(it.sprites.backDefault)
-//        .centerCrop()
-//        .placeholder(R.drawable.color_background)
-//        .into(leftBottomShine)
-//Glide.with(this).load(it.sprites.backShiny)
-//        .centerCrop()
-//        .placeholder(R.drawable.color_background)
-//        .into(rightBottomShine)
 
 
             } else {
                 Toast.makeText(this, "Error occurred in getting data", Toast.LENGTH_LONG).show()
                 var intent = Intent(this, RecyclerListFragment::class.java)
                 startActivity(intent)
+            }
+        })
+
+    }
+
+
+    fun networkObserver( detail_url: String){
+        //1
+        connectivityLiveData.observe(this, Observer { isAvailable ->
+            //2
+            when (isAvailable) {
+                true -> {
+                    //3
+                    val viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+                    viewModel.makeApiCall(detail_url!!)
+//                statusButton.visibility = View.GONE
+//                moviesRecyclerView.visibility = View.VISIBLE
+//                searchEditText.visibility = View.VISIBLE
+                }
+                false -> {
+                    Toast.makeText(this, "network failed", Toast.LENGTH_SHORT).show()
+
+//                statusButton.visibility = View.VISIBLE
+//                moviesRecyclerView.visibility = View.GONE
+//                searchEditText.visibility = View.GONE
+                }
             }
         })
 

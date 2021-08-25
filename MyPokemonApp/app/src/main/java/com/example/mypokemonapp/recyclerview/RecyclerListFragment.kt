@@ -1,6 +1,7 @@
 package com.example.mypokemonapp.recyclerview
 
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,39 +14,78 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mypokemonapp.ui.PokemonDetail
 import com.example.mypokemonapp.R
+import com.example.mypokemonapp.connectivity.ConnectivityLiveData
 import com.example.mypokemonapp.model.RecyclerList
 import com.example.mypokemonapp.ui.UploadImage
 import com.example.mypokemonapp.viewModel.MainViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_recycler_list.*
+import okhttp3.internal.platform.Jdk9Platform.Companion.isAvailable
 
 
 class RecyclerListFragment : Fragment() {
 
     private lateinit var recyclerAdapter: RecyclerViewAdapter
+    private lateinit var connectivityLiveData: ConnectivityLiveData
 
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        connectivityLiveData = ConnectivityLiveData(requireActivity().application)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observer()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-
-
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_recycler_list, container, false)
-
         initViewModel(view)
         return view
 
+
     }
+
+
+
+
+fun observer(){
+    //1
+    connectivityLiveData.observe(viewLifecycleOwner, Observer { isAvailable ->
+        //2
+        when (isAvailable) {
+            true -> {
+                //3
+                val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+                viewModel.makeApiCall()
+//                statusButton.visibility = View.GONE
+//                moviesRecyclerView.visibility = View.VISIBLE
+//                searchEditText.visibility = View.VISIBLE
+            }
+          false -> {
+              Toast.makeText(context, "network failed", Toast.LENGTH_SHORT).show()
+
+//                statusButton.visibility = View.VISIBLE
+//                moviesRecyclerView.visibility = View.GONE
+//                searchEditText.visibility = View.GONE
+            }
+        }
+    })
+
+}
 
     private fun initViewModel(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
 
         val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.getRecyclerListObserver()
-            .observe(viewLifecycleOwner, Observer<RecyclerList> {
-
+        viewModel.getRecyclerListObserver().observe(viewLifecycleOwner, {
 
                 if (it != null) {
                     recyclerAdapter = RecyclerViewAdapter()
@@ -77,7 +117,7 @@ class RecyclerListFragment : Fragment() {
             })
 
         // call the view model function makeApi call
-        viewModel.makeApiCall()
+        //viewModel.makeApiCall()
     }
 
     companion object {

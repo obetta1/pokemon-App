@@ -25,6 +25,8 @@ class RetroInstance() {
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+
+
         }
     }
 }

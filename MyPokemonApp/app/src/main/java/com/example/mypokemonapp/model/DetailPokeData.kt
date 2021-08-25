@@ -67,3 +67,4 @@ data class Stats( val baseStat: Long, val effort: Long, val stat: General)
 
 // Model's the types of each pokemon character
 data class Types(val slot: Long, val type: General)
+

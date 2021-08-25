@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mypokemonapp.connectivity.ConnectivityLiveData
 import com.example.mypokemonapp.model.DetailPokeData
 import com.example.mypokemonapp.network.RetroInstance
 import com.example.mypokemonapp.network.RetroServices
@@ -14,6 +15,8 @@ class DetailViewModel:ViewModel() {
     // Holds the details of the pokemon retrieved from the API
     private val _pokemon = MutableLiveData<DetailPokeData>()
     val pokemon = _pokemon as LiveData<DetailPokeData>
+
+
 
 
 
