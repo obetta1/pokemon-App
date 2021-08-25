@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        app:cardBackgroundColor="#daadaa"
+        app:cardBackgroundColor="#C4EDE5"
         android:layout_gravity="center"
         app:cardCornerRadius="21dp"
         android:elevation="78dp"
@@ -30,10 +30,10 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="sample"
-            android:gravity="bottom"
             android:layout_gravity="bottom"
+            android:layout_marginStart="20dp"
+            android:gravity="bottom"
+            android:text="sample"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />

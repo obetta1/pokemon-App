@@ -9,4 +9,5 @@
                     \n\t\t\t\t\u25AA Slot: %3$s\n\t\t\u25AA %4$s\n
                     \t\t\t\t▪ Hidden: %5$s\n\t\t\t\t▪ Slot: %6$s\n\u25A0 Base experience: %7$s
     </string>
+    <string name="upload">Upload</string>
 </resources>
