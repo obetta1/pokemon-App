@@ -56,19 +56,16 @@ class RecyclerViewAdapter:RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener  = listener
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_part, parent, false)
 
         return MyViewHolder(view,mListener)
     }
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         var list = items[position]
          holder.bind(list)
 
     }
-
     override fun getItemCount(): Int {
         return items.size
     }

@@ -13,9 +13,7 @@ fun View.snackbar(message:String){
                 snackbar.dismiss()
             }
         }.show()
-
 }
-
 fun ContentResolver.getFileNmae(uri: Uri):String{
     var name =""
     val cursor = query(uri, null,

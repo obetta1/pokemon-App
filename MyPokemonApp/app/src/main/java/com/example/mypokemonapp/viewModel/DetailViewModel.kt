@@ -16,20 +16,14 @@ class DetailViewModel:ViewModel() {
     private val _pokemon = MutableLiveData<DetailPokeData>()
     val pokemon = _pokemon as LiveData<DetailPokeData>
 
-
-
-
-
     // Keeps track of exceptions which may occur during network call
     private val _message = MutableLiveData<String>()
     val message = _message as LiveData<String>
 
-
     fun getRecyclerListObserver():MutableLiveData<DetailPokeData>{
         return _pokemon
     }
-
-    // Network call to the endpoints with error handling
+     // Network call to the endpoints with error handling
 
     fun makeApiCall(url: String){
 
@@ -38,8 +32,6 @@ class DetailViewModel:ViewModel() {
                 .create(RetroServices::class.java)
             val responce = retroInstance.getPokemonDetailFromApi(url)
             _pokemon.postValue((responce))
-
-
         }
 
     }

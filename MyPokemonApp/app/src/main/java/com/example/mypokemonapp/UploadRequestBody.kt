@@ -16,7 +16,6 @@ class UploadRequestBody(
     private val contentType: String,
     private val callback: UploadCallBack
 ) : RequestBody() {
-
     override fun contentType() = "$contentType/jpg".toMediaTypeOrNull()
 
     override fun contentLength() = file.length()
@@ -34,15 +33,11 @@ class UploadRequestBody(
                 handler.post(ProgressUpdater(uploaded, length))
                 uploaded += read
                 sink.write(buffer, 0, read)
-            }
-        }
-
-
+            } }
     }
 
     interface UploadCallBack {
         fun onProgressUpdate(percentage: Int)
-
     }
 
     inner class ProgressUpdater(
@@ -53,7 +48,6 @@ class UploadRequestBody(
             callback.onProgressUpdate((100 * uploaded / total).toInt())
         }
     }
-
     companion object {
         private const val DEFAULT_BUFFER_SIZE = 2048
     }

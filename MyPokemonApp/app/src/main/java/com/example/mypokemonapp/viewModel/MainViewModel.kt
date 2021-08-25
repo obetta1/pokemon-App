@@ -25,9 +25,6 @@ class MainViewModel : ViewModel() {
         return recyclerListLiveData
     }
 
-
-
-
     // this is basically the function for the coroutine
     //making the api call in the IO instead of the main thread
 
