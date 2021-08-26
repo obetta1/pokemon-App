@@ -51,10 +51,7 @@ class RecyclerListFragment : Fragment() {
 
 
     }
-
-
-
-
+    // this function is used to observe the connectivity livedata to check when the network is active
 fun observer(){
     //1
     connectivityLiveData.observe(viewLifecycleOwner, Observer { isAvailable ->
@@ -64,22 +61,19 @@ fun observer(){
                 //3
                 val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
                 viewModel.makeApiCall()
-//                statusButton.visibility = View.GONE
-//                moviesRecyclerView.visibility = View.VISIBLE
-//                searchEditText.visibility = View.VISIBLE
+                progressBar.visibility = View.GONE
+
+
             }
           false -> {
               Toast.makeText(context, "network failed", Toast.LENGTH_SHORT).show()
 
-//                statusButton.visibility = View.VISIBLE
-//                moviesRecyclerView.visibility = View.GONE
-//                searchEditText.visibility = View.GONE
-            }
+               progressBar.visibility = View.VISIBLE
+          }
         }
     })
-
 }
-
+ // this function is used to observe the recyclerlistlivedata
     private fun initViewModel(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
@@ -115,16 +109,10 @@ fun observer(){
 
                 recyclerAdapter.notifyDataSetChanged()
             })
-
-        // call the view model function makeApi call
-        //viewModel.makeApiCall()
     }
 
     companion object {
         @JvmStatic
         fun newInstance() = RecyclerListFragment()
-
     }
-
-
 }

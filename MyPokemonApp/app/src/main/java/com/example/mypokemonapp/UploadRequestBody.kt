@@ -14,8 +14,7 @@ import java.io.FileInputStream
 class UploadRequestBody(
     private val file: File,
     private val contentType: String,
-    private val callback: UploadCallBack
-) : RequestBody() {
+    private val callback: UploadCallBack ) : RequestBody() {
     override fun contentType() = "$contentType/jpg".toMediaTypeOrNull()
 
     override fun contentLength() = file.length()
@@ -35,19 +34,16 @@ class UploadRequestBody(
                 sink.write(buffer, 0, read)
             } }
     }
-
     interface UploadCallBack {
         fun onProgressUpdate(percentage: Int)
     }
-
     inner class ProgressUpdater(
         private val uploaded: Long,
         private val total: Long
     ) : Runnable {
         override fun run() {
             callback.onProgressUpdate((100 * uploaded / total).toInt())
-        }
-    }
+        } }
     companion object {
         private const val DEFAULT_BUFFER_SIZE = 2048
     }
