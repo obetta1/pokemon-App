@@ -32,14 +32,11 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             // this is where i handled the error that may occurre from the network call
             // using try and catch
-            try {
                 val retroInstance = RetroInstance.getRetroInstance()
                     .create(RetroServices::class.java)
                 val responce = retroInstance.getDataFromApi("ny")
                 recyclerListLiveData.postValue((responce))
-            } catch (e: UnknownHostException) {
-                e.printStackTrace()
-            }
+
         }
     }
 }

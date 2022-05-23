@@ -1,17 +1,19 @@
 package com.example.mypokemonapp.recyclerview
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.ahmadrosid.svgloader.SvgLoader
 import com.example.mypokemonapp.R
 import com.example.mypokemonapp.model.Result
 import com.squareup.picasso.Picasso
 
 
-class RecyclerViewAdapter:RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+class RecyclerViewAdapter(contex:Context):RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
     // initialize the onItemClickListener
     private lateinit var  mListener :onItemClickListener
 
@@ -43,7 +45,9 @@ class RecyclerViewAdapter:RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>
             val url = data.url
             var str = url.split("/")
             var id = str[str.lastIndex-1]
-            Picasso.get().load("$image_url$id.png").into(imageThumb)
+        Picasso.get().load("$image_url$id.png").into(imageThumb)
+        //
+
         }
     }
 

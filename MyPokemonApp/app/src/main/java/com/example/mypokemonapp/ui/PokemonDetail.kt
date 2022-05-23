@@ -74,6 +74,7 @@ class PokemonDetail : AppCompatActivity() {
             .centerCrop()
             .placeholder(R.drawable.color_background)
             .into(main_poke_image)
+        
 
         // call the view model function makeApi call
        // viewModel.makeApiCall(detail_url!!)

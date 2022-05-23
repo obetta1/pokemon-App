@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.ahmadrosid.svgloader.SvgLoader
 import com.example.mypokemonapp.R
 import com.example.mypokemonapp.connectivity.ConnectivityLiveData
 import com.example.mypokemonapp.recyclerview.RecyclerListFragment

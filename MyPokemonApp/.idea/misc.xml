@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.2609375" />
         <entry key="app/src/main/res/drawable/color_background.xml" value="0.24739583333333334" />
         <entry key="app/src/main/res/drawable/mix.xml" value="0.25794871794871793" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_pokemon_detail.xml" value="0.2405727858427407" />
+        <entry key="app/src/main/res/layout/activity_pokemon_detail.xml" value="0.21923076923076923" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_upload_image.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_recycler_list.xml" value="0.22" />

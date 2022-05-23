@@ -18,6 +18,7 @@ import com.example.mypokemonapp.connectivity.ConnectivityLiveData
 import com.example.mypokemonapp.model.RecyclerList
 import com.example.mypokemonapp.ui.UploadImage
 import com.example.mypokemonapp.viewModel.MainViewModel
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_recycler_list.*
 import okhttp3.internal.platform.Jdk9Platform.Companion.isAvailable
@@ -27,8 +28,6 @@ class RecyclerListFragment : Fragment() {
 
     private lateinit var recyclerAdapter: RecyclerViewAdapter
     private lateinit var connectivityLiveData: ConnectivityLiveData
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +45,7 @@ class RecyclerListFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_recycler_list, container, false)
-        initViewModel(view)
         return view
-
-
     }
     // this function is used to observe the connectivity livedata to check when the network is active
 fun observer(){
@@ -59,15 +55,13 @@ fun observer(){
         when (isAvailable) {
             true -> {
                 //3
-                val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-                viewModel.makeApiCall()
+                ViewModelProvider(this).get(MainViewModel::class.java)
+                initViewModel(requireView())
                 progressBar.visibility = View.GONE
-
-
             }
           false -> {
               Toast.makeText(context, "network failed", Toast.LENGTH_SHORT).show()
-
+clearFindViewByIdCache()
                progressBar.visibility = View.VISIBLE
           }
         }
@@ -109,6 +103,8 @@ fun observer(){
 
                 recyclerAdapter.notifyDataSetChanged()
             })
+
+     viewModel.makeApiCall()
     }
 
     companion object {

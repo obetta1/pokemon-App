@@ -33,8 +33,5 @@ class DetailViewModel:ViewModel() {
             val responce = retroInstance.getPokemonDetailFromApi(url)
             _pokemon.postValue((responce))
         }
-
     }
-
-
 }
